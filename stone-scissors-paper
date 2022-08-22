@@ -1,0 +1,21 @@
+import random
+
+should_continue = True #булевая переменная
+while should_continue:
+    player = input('Введите: [R/S/P] ').lower()#запрос у игрока что он выберет
+
+    if player not in ['r','s','p']:
+        print('Incorrect input. Try again')#провера на валидный ввод
+        continue
+    gen = {1:'r', 2:'s', 3:'p'}#генерация случайного ответа компьютера
+    comp = gen[random.randint(1,3)]#генерация случайного ответа компьютера
+    print(f'Comp choice = {comp}')#показываем что выбрал компьютер
+    winning = [('p', 'r'), ('r', 's'),('s', 'p')]#выиграшные комбинации
+
+    if player == comp:#выводит ничью
+        print('Ничья!')
+    elif (player , comp ) in winning:#победа игрока
+        print('Player Победил!')
+    else:#победа компьютера
+        print('Comp Победил!')
+    should_continue = input('Хотите продолжить, введите y. хотите закончить любой другой символ [y/n] ').lower()== 'y'#хотите ли вы продолжить игру
